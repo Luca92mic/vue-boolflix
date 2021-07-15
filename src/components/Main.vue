@@ -1,29 +1,25 @@
 <template>
-  <div class="hello">
-    <h2>{{ msg }}</h2>
-
-    <ul>
-      <li>Titolo: {{ title }}</li> 
-      <li>Titolo originale: {{ originalTitle }}</li>
-      <li>Lingua originale: {{ language }}</li>
-      <li>Voto medio: {{ vote }}</li>
-    </ul>
-    
-  </div>
+  <main>
+      <div class="container">
+        <div class="search">
+            <h2>Risultato ricerca: {{ range }} </h2>
+            <div class="cards">
+                <Card v-for="film in films" :key="film.id" 
+                :info="film"/>
+            </div>
+        </div> 
+      </div>
+     
+  </main>
 </template>
 
 <script>
+import Card from "@/components/Card.vue";
 export default {
-  name: 'Main',
-  props: {
-    msg: String,
-    title: String,
-    originalTitle: String,
-    language: String,
-    vote: Number,
-  },
-}
+    name: "Main",
+    components: {
+        Card,
+    },
+    props: ["films", "range"] 
+};
 </script>
-
-<style scoped lang="scss">
-</style>
